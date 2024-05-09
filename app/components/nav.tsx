@@ -4,9 +4,6 @@ const navItems = {
   '/': {
     name: 'home',
   },
-  '/gallery': {
-    name: 'gallery',
-  },
   '/work': {
     name: 'work',
   },
@@ -16,7 +13,6 @@ const navItems = {
   '/guestbook': {
     name: 'guestbook',
   },
-  
 };
 
 export function Navbar() {

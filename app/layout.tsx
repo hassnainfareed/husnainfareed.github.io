@@ -8,17 +8,17 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { SandpackCSS } from './blog/[slug]/sandpack';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://hussnainfareed.dev'),
+  metadataBase: new URL('https://leerob.io'),
   title: {
-    default: 'Hussnain Fareed',
-    template: '%s | Hussnain Fareed',
+    default: 'Lee Robinson',
+    template: '%s | Lee Robinson',
   },
   description: 'Developer, writer, and creator.',
   openGraph: {
     title: 'Lee Robinson',
     description: 'Developer, writer, and creator.',
-    url: 'https://hussnainfareed.dev',
-    siteName: 'Hussnain Fareed',
+    url: 'https://leerob.io',
+    siteName: 'Lee Robinson',
     locale: 'en_US',
     type: 'website',
   },
