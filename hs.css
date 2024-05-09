@@ -1,0 +1,569 @@
+:root {
+    --c_01: #fbffb9;
+    --c_02: #B39FD1;
+    --c_03: #1e2022;
+    --c_04: #CD853F;
+    --c_05: #2EA397;
+    --c_06: #222426;
+    --c_07: #743D2B;
+    --c_08: #d50000;
+    --c_09: #ffffff;
+    --c_10: #a8a8a8;
+    --size: 300px;
+    --jane: calc(var(--size) / 2.3);
+    --jane_position: calc(var(--jane) / 2.2);
+    --chin_w: calc(var(--jane) / 3);
+    --chin_h: calc(var(--chin_w) * 1.1);
+    --chin_position: calc(var(--chin_h) / 4.6);
+    --chin_border_position: calc(var(--chin_h) / 6.7);
+    --badge_border: calc(var(--size) / 44);
+    --face_border: calc(var(--size) / 110);
+    --eye: calc(var(--size) / 5.5);
+    --eyebrow_w: calc(var(--size) / 8.5);
+    --eyebrow_h: calc(var(--size) / 115);
+    --eyelid_w: calc(var(--size) / 12);
+    --eyelid_h: calc(var(--size) / 150);
+    --pupil: calc(var(--size) / 22);
+    --pupil_border: var(--eyelid_h);
+    --nose: calc(var(--size) * 0.07);
+    --nose_border: var(--eyelid_h);
+    --lip: calc(var(--size) / 10);
+    --lip_half: calc(var(--lip) / 2);
+    --lip_top_w: calc(var(--lip) * 1.1);
+    --lip_top_h: calc(var(--lip) / 4);
+    --hair: calc(var(--size) / 2.6);
+    --hairfix_lg: calc(var(--size) / 6);
+    --hairfix_sm: calc(var(--size) * 0.11428571);
+    --ear_w: var(--pupil);
+    --ear_h: var(--lip);
+    --earring: calc(var(--size) * 0.04047619);
+}
+
+@media screen and (min-width: 30em) {
+    :root {
+        --size: 500px;
+        --chin_position: calc(var(--chin_h) / 4.435);
+    }
+}
+
+@media screen and (min-width: 85em) {
+    :root {
+        --size: 600px;
+        --chin_position: calc(var(--chin_h) / 4.7);
+    }
+}
+
+@media screen and (min-width: 120em) {
+    :root {
+        --size: 700px;
+        --chin_position: calc(var(--chin_h) / 4.55);
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--c_01);
+}
+
+:before,
+:after {
+    content: "";
+}
+
+ul {
+    list-style-type: none;
+}
+
+.enter-btn-box {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.enter-btn-box input {
+    -webkit-appearance: none;
+    border: solid 4px;
+    font-size: 2.0rem;
+    font-weight: 600;
+    background-color: #fbffb9;
+    color: black;
+    border-radius: 5%;
+}
+
+.enter-btn-box input:hover {
+    cursor: pointer;
+    background-color: #fbffb9;
+    /* border: #2EA397 solid 2px; */
+}
+
+.p-circle,
+.jane__lip--top__a:before,
+.jane__lip--top__a:after,
+.jane__lip--bottom:after,
+.jane-hair__do--02,
+.jane__earring:before,
+.jane__earring:after {
+    border-radius: 50%;
+}
+
+.p-flexcenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.p-transition {
+    transition: -webkit-transform 0.1s linear;
+    transition: transform 0.1s linear;
+    transition: transform 0.1s linear, -webkit-transform 0.1s linear;
+}
+
+.canvas {
+    width: 100%;
+    height: 100%;
+    background-color: var(--c_01);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -10;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.badge {
+    width: calc(var(--size) / 1.2);
+    height: calc(var(--size) / 1.2);
+    background-color: var(--c_02);
+    border: var(--badge_border) solid var(--c_03);
+    margin: 5vh auto;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+}
+
+.badge:hover {
+    background-color: var(--c_01);
+}
+
+.badge:hover+.canvas {
+    background-color: var(--c_02);
+}
+
+.badge:hover .jane-hair__fix--01 {
+    box-shadow: inset 0 var(--hairfix_lg) var(--c_01);
+}
+
+.badge:hover .jane-hair__fix--02 {
+    box-shadow: inset 0 var(--hairfix_sm) var(--c_01);
+}
+
+.badge:hover .jane-hair__do {
+    --c_06: var(--c_05);
+}
+
+.badge:hover .jane__pupil {
+    -webkit-transform: translatex(-30%);
+    transform: translatex(-30%);
+}
+
+.badge:hover .jane__eyebrow--left {
+    -webkit-transform: translate(-3%, -100%) rotate(20deg);
+    transform: translate(-3%, -100%) rotate(20deg);
+}
+
+.badge:hover .jane__eyebrow--right {
+    -webkit-transform: translate(3%, 0) rotate(-10deg);
+    transform: translate(3%, 0) rotate(-10deg);
+}
+
+.jane {
+    width: calc(var(--jane) / 1.1);
+    height: var(--jane);
+    background-color: var(--c_04);
+    border-radius: 50% / 40% 40% 60% 60%;
+    border: var(--face_border) solid var(--c_03);
+    margin-left: calc(var(--jane) / -2);
+    position: absolute;
+    top: var(--jane_position);
+    left: 51.5%;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    z-index: 0;
+}
+
+.jane:before,
+.jane:after {
+    width: var(--chin_w);
+    height: var(--chin_h);
+    -webkit-clip-path: polygon(48% 28%, -9.5% 0, 100% 4.5%);
+    clip-path: polygon(48% 28%, -9.5% 0, 100% 4.5%);
+    margin-left: calc(var(--chin_w) / -2);
+    position: absolute;
+    left: 50%;
+}
+
+.jane:before {
+    background-color: var(--c_03);
+    top: calc(var(--jane) - calc(var(--face_border) * 1.2) - var(--chin_border_position));
+}
+
+.jane:after {
+    background-color: var(--c_04);
+    top: calc(var(--jane) - var(--face_border) - var(--chin_position));
+}
+
+.jane__eyes {
+    width: 100%;
+    height: 100%;
+    margin-top: calc(var(--eyebrow_h) * -1.3);
+}
+
+.jane__eye {
+    width: var(--eye);
+    height: var(--eye);
+    flex-direction: column;
+}
+
+.jane__eye--left {
+    padding-right: calc(var(--eye) / 10);
+}
+
+.jane__eyebrow {
+    width: var(--eyebrow_w);
+    height: var(--eyebrow_h);
+    background-color: var(--c_03);
+    border-radius: var(--eyebrow_h);
+    position: relative;
+    z-index: 20;
+}
+
+.jane__eyebrow--left {
+    -webkit-transform: translate(-3%, -100%) rotate(30deg);
+    transform: translate(-3%, -100%) rotate(30deg);
+}
+
+.jane__eyebrow--right {
+    -webkit-transform: translate(3%, 0) rotate(-18deg);
+    transform: translate(3%, 0) rotate(-18deg);
+}
+
+.jane__eyelid {
+    width: var(--eyelid_w);
+    height: calc(var(--eyelid_w) / 2);
+    border-bottom: var(--eyelid_h) solid var(--c_03);
+    background-color: var(--c_04);
+    position: relative;
+    z-index: 10;
+}
+
+.jane__pupil {
+    width: var(--pupil);
+    height: var(--pupil);
+    background-color: var(--c_07);
+    border: var(--pupil_border) solid var(--c_03);
+    margin-top: calc(var(--pupil) / -2);
+    position: relative;
+    z-index: 0;
+}
+
+.jane__nose {
+    width: var(--nose);
+    height: calc(var(--nose) / 0.4);
+    border-color: transparent transparent var(--c_03) transparent;
+    border-width: var(--nose_border);
+    border-style: solid;
+    border-radius: 50% / 0 0 40% 40%;
+    margin-left: calc(var(--nose) / -2);
+    position: absolute;
+    top: 26%;
+    left: 51%;
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
+}
+
+.jane__nose:before {
+    width: var(--nose_border);
+    height: calc(var(--nose_border) * 4);
+    background-color: var(--c_04);
+    border-right: var(--nose_border) solid var(--c_03);
+    box-shadow: calc(var(--nose_border) * -1.9) var(--nose_border) 0 var(--nose_border) var(--c_04);
+    border-radius: 0% / 0 0 50% 50%;
+    position: absolute;
+    top: 81%;
+    left: calc(var(--nose) / 11);
+    -webkit-transform: rotate(16deg) translate3d(0, 0, 0);
+    transform: rotate(16deg) translate3d(0, 0, 0);
+}
+
+.jane__lip {
+    position: absolute;
+    left: 50%;
+}
+
+.jane__lip--top {
+    width: var(--lip_top_w);
+    height: var(--lip_top_h);
+    margin-left: calc(var(--lip_top_w) / -2.1);
+    bottom: calc(var(--lip) / 1.7);
+    z-index: 20;
+}
+
+.jane__lip--top:before {
+    width: 100%;
+    height: 100%;
+    background-color: var(--c_04);
+    position: absolute;
+    top: -20%;
+    left: 0;
+    z-index: -10;
+}
+
+.jane__lip--top:after {
+    width: 89.5%;
+    height: calc(var(--nose_border) / 1.1);
+    background-color: var(--c_03);
+    border-radius: var(--lip);
+    position: absolute;
+    bottom: calc(var(--nose_border) / 3);
+    left: 2.5%;
+}
+
+.jane__lip--top__a:before,
+.jane__lip--top__a:after {
+    width: calc(var(--lip) / 1.5);
+    height: calc(var(--lip) / 1.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.jane__lip--top__a:before {
+    background-color: var(--c_08);
+    -webkit-clip-path: polygon(64% 12%, 0 32%, 90% 32%);
+    clip-path: polygon(64% 12%, 0 32%, 90% 32%);
+}
+
+.jane__lip--top__a:after {
+    background-color: var(--c_03);
+    -webkit-clip-path: polygon(64% -2%, 0 28%, 95% 32%);
+    clip-path: polygon(64% -2%, 0 28%, 95% 32%);
+    z-index: -10;
+}
+
+.jane__lip--top__b:before,
+.jane__lip--top__b:after {
+    width: calc(var(--lip) / 1.55);
+    height: calc(var(--lip) / 1.55);
+    left: 34%;
+    -webkit-transform: scale(-1, 1);
+    transform: scale(-1, 1);
+}
+
+.jane__lip--bottom {
+    width: var(--lip);
+    height: calc(var(--lip) / 2);
+    background-color: var(--c_08);
+    border: var(--nose_border) solid var(--c_03);
+    border-bottom-left-radius: var(--lip_half);
+    border-bottom-right-radius: var(--lip_half);
+    border-top: 0;
+    margin-left: calc(var(--lip_half) * -1);
+    bottom: calc(var(--lip) / 4);
+    z-index: 10;
+}
+
+.jane__lip--bottom:after {
+    width: var(--lip_half);
+    height: calc(var(--lip_half) / 2);
+    background-color: var(--c_09);
+    border: var(--nose_border) solid var(--c_03);
+    margin-top: calc(var(--lip_half) / -2);
+}
+
+.jane-hair {
+    width: 100%;
+    height: 100%;
+    margin-top: var(--jane_position);
+    position: absolute;
+    top: calc(var(--jane) / -1.15);
+    left: 1.5%;
+}
+
+.jane-hair__fix {
+    position: absolute;
+    z-index: 60;
+}
+
+.jane-hair__fix--01 {
+    width: var(--hair);
+    height: calc(var(--hair) * 0.8);
+    box-shadow: inset 0 var(--hairfix_lg) var(--c_02);
+    top: calc(var(--jane) / 2.63);
+    left: calc(var(--jane) / 3);
+    z-index: 40;
+    -webkit-transform: rotate(-7deg);
+    transform: rotate(-7deg);
+}
+
+.jane-hair__fix--02 {
+    width: calc(var(--hair) * 1.5);
+    height: calc(var(--hair) * 0.8);
+    box-shadow: inset 0 var(--hairfix_sm) var(--c_02);
+    top: calc(var(--jane) / 1.35);
+    left: calc(var(--jane) / -3.5);
+    -webkit-transform: rotate(-48deg);
+    transform: rotate(-48deg);
+}
+
+.jane-hair__fix--03 {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.jane-hair__do {
+    background-color: var(--c_06);
+    position: absolute;
+}
+
+.jane-hair__do--01 {
+    width: calc(var(--hair) * 0.7);
+    height: var(--hair);
+    border-radius: 0 100% 0 0;
+    top: calc(var(--jane) * 0.86);
+    right: calc(var(--jane) / 5.6);
+    z-index: -10;
+}
+
+.jane-hair__do--02 {
+    width: calc(var(--hair) * 1);
+    height: calc(var(--hair) * 0.8);
+    box-shadow: inset 0 var(--hairfix_lg) var(--c_06);
+    background-color: transparent;
+    border: 0;
+    -webkit-transform: rotate(-42deg);
+    transform: rotate(-42deg);
+    top: calc(var(--jane) * 0.7);
+    left: calc(var(--jane) / 3.2);
+    z-index: 30;
+}
+
+.jane-hair__do--03 {
+    width: calc(var(--hair) * 0.625);
+    height: var(--hair);
+    border-radius: 100% 0 0 0;
+    top: calc(var(--jane) * 0.73);
+    left: calc(var(--jane) / 17.9);
+    z-index: 50;
+}
+
+.jane__ear {
+    width: var(--ear_w);
+    height: var(--ear_h);
+    background-color: var(--c_04);
+    border: var(--face_border) solid var(--c_03);
+    border-left: 0;
+    border-radius: 48%;
+    position: absolute;
+    bottom: calc(var(--jane) / 3.7);
+    right: calc(var(--jane) / -16);
+    -webkit-transform: rotate(18deg);
+    transform: rotate(18deg);
+    z-index: 60;
+}
+
+.jane__ear:before,
+.jane__ear:after {
+    width: calc(var(--nose_border) / 1.5);
+    height: calc(var(--ear_w) / 2);
+    background-color: var(--c_03);
+    border-radius: 30%;
+    position: absolute;
+}
+
+.jane__ear:before {
+    top: 0;
+    left: 5%;
+    -webkit-transform: rotate(15deg);
+    transform: rotate(15deg);
+}
+
+.jane__ear:after {
+    bottom: 0;
+    left: 10%;
+    -webkit-transform: rotate(-13deg);
+    transform: rotate(-13deg);
+}
+
+.jane__ear__line {
+    width: var(--nose_border);
+    height: calc(var(--ear_w) / 1.6);
+    background-color: var(--c_03);
+    border-radius: 30%;
+    position: absolute;
+    top: calc(var(--ear_h) / 5);
+    left: calc(var(--ear_w) / 3.5);
+    -webkit-transform: rotate(4deg);
+    transform: rotate(4deg);
+}
+
+.jane__ear__line:before {
+    width: var(--nose_border);
+    height: calc(var(--ear_w) / 1.2);
+    background-color: var(--c_04);
+    position: absolute;
+    top: calc(var(--ear_h) / 33);
+    left: calc(var(--ear_w) * -0.3);
+}
+
+.jane__earring {
+    width: var(--earring);
+    height: var(--earring);
+    border: var(--nose_border) solid;
+    border-color: var(--c_10) var(--c_10) transparent transparent;
+    position: absolute;
+    z-index: 70;
+    -webkit-transform: rotate(30deg);
+    transform: rotate(30deg);
+}
+
+.jane__earring--01 {
+    top: calc(var(--jane) / 2);
+    right: calc(var(--jane) / -11);
+}
+
+.jane__earring--02 {
+    top: calc(var(--jane) / 1.77);
+    right: calc(var(--jane) / -13);
+}
+
+.jane__earring--03 {
+    top: calc(var(--jane) / 1.64);
+    right: calc(var(--jane) / -19);
+    border-bottom-color: var(--c_10);
+}
+
+.jane__earring--03:after {
+    top: 85%;
+    left: 0;
+}
+
+.jane__earring:before,
+.jane__earring:after {
+    width: 32.5%;
+    height: 32%;
+    position: absolute;
+    background: var(--c_10);
+}
+
+.jane__earring:before {
+    top: -20%;
+    left: 0;
+}
+
+.jane__earring--01:after,
+.jane__earring--02:after {
+    display: none;
+}
